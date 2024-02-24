@@ -6,7 +6,7 @@
 
       preload = /path/to/image.png;
 
-      wallpaper = monitos, /path/to/image.png;
+      wallpaper = monitor,/path/to/image.png;
     '';
   };
 }

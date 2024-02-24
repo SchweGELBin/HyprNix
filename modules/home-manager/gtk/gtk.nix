@@ -3,7 +3,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Macchiato-Standard-Green-Dark";
+      name = "Catppuccin-Macchiato-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk;
     };
   };
