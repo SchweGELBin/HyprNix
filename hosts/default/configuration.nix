@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../modules/nixos/default.nix
       inputs.home-manager.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
     ];
 
   # State Version
@@ -80,18 +81,28 @@
     variant = "";
   };
 
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/etc/secrets/keys.txt";
+  
+  sops.secrets.password = { };
+
   # Main User
   main-user.enable = true;
   main-user.userName = "michi";
+  #main-user.pass = "${config.sops.secrets.password.path}";
+  main-user.pass = "01234";
 
   # AutoLogin
-  services.getty.autologinUser = "michi";
+  services.getty.autologinUser = "michi"; 
 
   # Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
   # System Packages (Search with: nix search <package>)
   environment.systemPackages = with pkgs; [
+    age
     android-tools
     blender
     catppuccin
@@ -130,6 +141,7 @@
     pavucontrol
     rofi
     rofimoji
+    sops
     spotify
     steam
     superTuxKart
@@ -224,6 +236,8 @@
     hideMounts = true;
     directories = [
       "/etc/nixos"
+      "/etc/secrets"
+      #"/run/secrets"
       "/var/log"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"

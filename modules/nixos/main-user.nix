@@ -14,12 +14,19 @@ in
         username
       '';
     };
+
+    main-user.pass = lib.mkOption {
+      default = "1234";
+      description = ''
+        password
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
     users.users.${cfg.userName} = {
       isNormalUser = true;
-      #initialPassword = "1234";
+      initialPassword = "${cfg.pass}";
       description = "michi";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];

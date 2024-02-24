@@ -7,7 +7,7 @@
       echo "Rebuilds your system, make sure to use \"git pull\" once in a while"
       echo "Make sure to place your dotfiles in /etc/nixos/HyprNix/"
       git add /etc/nixos/HyprNix/.
-      nix flake update --flake /etc/nixos/HyprNix/#default
+      nix flake update
       nixos-rebuild switch --flake /etc/nixos/HyprNix/#default
     '')
     (pkgs.writeShellScriptBin "inject-payload" ''

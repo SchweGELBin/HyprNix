@@ -20,6 +20,12 @@
       url = "github:nix-community/impermanence";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     nix-colors.url = "github:misterio77/nix-colors";
 
     #firefox-addons = {

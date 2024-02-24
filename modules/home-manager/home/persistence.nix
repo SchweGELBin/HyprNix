@@ -14,6 +14,7 @@
       ".mozilla"
       ".minecraft"
       ".config/nvim"
+      ".config/sops"
       {
         directory = ".local/share/Steam";
         method = "symlink";
